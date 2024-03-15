@@ -9,7 +9,7 @@ exports.getSlots = async (req, res) => {
     today.setHours(0, 0, 0, 0);
 
     const nextWeek = new Date(today);
-    nextWeek.setDate(today.getDate() + 6);
+    nextWeek.setDate(today.getDate() + 7);
 
     if (selectedDate < today || selectedDate > nextWeek) {
       return res
