@@ -1,26 +1,24 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const slotRoutes = require('./src/routes/slotRoutes')
+const express = require("express");
+const mongoose = require("mongoose");
+const slotRoutes = require("./src/routes/slotRoutes");
 
 const app = express();
-require('dotenv').config();
+require("dotenv").config();
 
-require('./db');
+require("./db");
 
+//middleware
 
-//middleware 
-
-const cron = require('node-cron');
-
+const cron = require("node-cron");
+app.get("/", () => {
+  console.log("hello");
+});
 app.use(express.json());
 
-app.use('/api',slotRoutes);
+app.use("/api", slotRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
-
-
