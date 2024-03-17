@@ -8,6 +8,7 @@ const timeRanges = {
   evening: { start: 18, end: 23 },
   night: { start: 0, end: 6 },
 };
+
 cron.schedule(`0 ${timeRanges.morning.end} * * *`, async () => {
   console.log(
     "Morning time has ended. Fetching afternoon, evening, and night slots..."
@@ -47,9 +48,16 @@ const fetchAndDisplaySlots = async (selectedDate) => {
     }
   }
 
+  if (slots.length === 0) {
+    console.log("No slots found for", selectedDate);
+  }
+  console.log("No slots found for", selectedDate);
+
   return slots;
 };
+
 async function fetchSlotsFromDatabase(timeRange, selectedDate) {
+  console.log("Fetching slots for", timeRange, "on", selectedDate);
   console.log("timeRange:", timeRange);
   console.log("timeRanges:", timeRanges);
 
@@ -77,15 +85,4 @@ async function fetchSlotsFromDatabase(timeRange, selectedDate) {
   return slots;
 }
 
-async function fetchAllSlotsForDate(selectedDate) {
-  return await Slot.find({ date: selectedDate });
-}
-
-function getTimeFromDate(date, hours) {
-  const time = new Date(date);
-  time.setHours(hours, 0, 0, 0);
-  return time;
-}
-
-// Exporting the fetchAndDisplaySlots function for use in other files
 module.exports = { fetchAndDisplaySlots };
