@@ -1,18 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const slotRoutes = require("./src/routes/slotRoutes");
-
+const cron = require("node-cron");
 const app = express();
 require("dotenv").config();
-
 require("./db");
 
 //middleware
-
-const cron = require("node-cron");
-app.get("/", () => {
-  console.log("hello");
-});
 app.use(express.json());
 
 app.use("/api", slotRoutes);
