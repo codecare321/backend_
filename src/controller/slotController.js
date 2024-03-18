@@ -84,5 +84,4 @@ async function fetchSlotsFromDatabase(timeRange, selectedDate) {
 
   return slots;
 }
-
 module.exports = { fetchAndDisplaySlots };

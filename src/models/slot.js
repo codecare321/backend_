@@ -12,6 +12,6 @@ const slotSchema = new mongoose.Schema({
   availability: { type: Boolean, default: true },
 });
 
-const Slot = mongoose.model("Slot", slotSchema);
+const Slot = mongoose.model("slots", slotSchema);
 
 module.exports = Slot;
